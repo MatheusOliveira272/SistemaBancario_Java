@@ -68,6 +68,7 @@ public class Transferencia {
         this.dataPagamento = dataPagamento;
     }
 
+    // toString para ver as informações
     @Override
     public String toString() {
         return "Transferencia{" + "id=" + id + ", contaOrigem=" + contaOrigem + ", contaDestino=" + contaDestino + ", valorTransferido=" + valorTransferido + ", dataPagamento=" + dataPagamento + '}';
