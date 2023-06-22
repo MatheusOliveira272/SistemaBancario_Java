@@ -6,7 +6,9 @@ package sistemabancario.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import sistemabancario.exception.LoginException;
 import sistemabancario.exception.UsuarioException;
+import sistemabancario.model.dao.LoginDao;
 import sistemabancario.model.dao.UsuarioDao;
 import sistemabancario.model.domain.Usuario;
 import sistemabancario.utils.Criptografar;
@@ -23,7 +25,7 @@ import sistemabancario.view.tables.TabelaUsuario;
  */
 public class ControllerUsuario {
     
-    public void efetuarLogin(TelaLogin t) throws UsuarioException{
+    public void efetuarLogin(TelaLogin t) throws UsuarioException, LoginException{
         var usuario = t.getTxtFieldEmailLogin().getText();
         //cria uma String a partir de um array de bytes para senha
         var senha = new String (t.getTxtFieldSenhaLogin().getPassword());
@@ -39,7 +41,13 @@ public class ControllerUsuario {
         
         var usuarioLogado = optionalUsuario.get();
         if(usuarioLogado.getSenha().equals(senhaEncriptografada)){
-                new TelaPrincipal().setVisible(true);
+         //aqui23/04
+           var controller = new ControllerLogin();
+                 controller.cadastraLogin(t);
+            
+          
+            
+            new TelaPrincipal().setVisible(true);
                 t.dispose();
         }else{
             throw new UsuarioException("Usuário/senha Inválido" + "Não Encontrado");
@@ -62,7 +70,7 @@ public class ControllerUsuario {
         TabelaUsuario tabelaUsuario = (TabelaUsuario) t.getTableListaUsuario().getModel();
         Usuario usuario = tabelaUsuario.getRegistros().get(row);
 
-        if (GerarMensagens.confirmar(t, "Deseja excluir a conta de id" + usuario.getId() + "?")) {
+        if (GerarMensagens.confirmar(t, "Deseja excluir a conta de nome " + usuario.getNome() + "?")) {
             UsuarioDao usuarioDao = new UsuarioDao();
             usuarioDao.deletar(usuario.getId());
             GerarMensagens.alerta(t, "Removido com sucesso!");

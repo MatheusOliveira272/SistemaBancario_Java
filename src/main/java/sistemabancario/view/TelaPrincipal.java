@@ -4,6 +4,10 @@
  */
 package sistemabancario.view;
 
+import javax.swing.JLabel;
+import sistemabancario.controller.ControllerLogin;
+import sistemabancario.model.dao.LoginDao;
+
 /**
  *
  * @author alunos
@@ -19,6 +23,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(this);
     }
 
+    public JLabel getLabelAcessoUsuario() {
+        return labelAcessoUsuario;
+    }
+
+    public JLabel getLabelEmailUsuario() {
+        return labelEmailUsuario;
+    }
+
+    public JLabel getLabelNomeUsuario() {
+        return labelNomeUsuario;
+    }
+
+    public void setLabelAcessoUsuario(JLabel labelAcessoUsuario) {
+        this.labelAcessoUsuario = labelAcessoUsuario;
+    }
+
+    public void setLabelEmailUsuario(JLabel labelEmailUsuario) {
+        this.labelEmailUsuario = labelEmailUsuario;
+    }
+
+    public void setLabelNomeUsuario(JLabel labelNomeUsuario) {
+        this.labelNomeUsuario = labelNomeUsuario;
+    }
+
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +59,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        labelNomeUsuario = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelEmailUsuario = new javax.swing.JLabel();
+        btnAgencia = new javax.swing.JButton();
+        btnCliente = new javax.swing.JButton();
+        btnPagamento = new javax.swing.JButton();
+        btnTrasnferencia = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        labelAcessoUsuario = new javax.swing.JLabel();
+        btnConta = new javax.swing.JButton();
+        btnUsuario = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -37,8 +87,151 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        menuLogin = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+
+        jMenuItem7.setText("jMenuItem7");
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel1.setText("Usuário: ");
+
+        labelNomeUsuario.setText(" ");
+
+        jLabel2.setText("Email: ");
+
+        labelEmailUsuario.setText(" ");
+
+        btnAgencia.setText("Agência");
+        btnAgencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgenciaActionPerformed(evt);
+            }
+        });
+
+        btnCliente.setText("Cliente");
+        btnCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteActionPerformed(evt);
+            }
+        });
+
+        btnPagamento.setText("Pagamento");
+        btnPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagamentoActionPerformed(evt);
+            }
+        });
+
+        btnTrasnferencia.setText("Transferência");
+        btnTrasnferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrasnferenciaActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Acesso:");
+
+        labelAcessoUsuario.setText(" ");
+
+        btnConta.setText("Conta");
+        btnConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContaActionPerformed(evt);
+            }
+        });
+
+        btnUsuario.setText("Usuário");
+        btnUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(btnPagamento)
+                .addGap(73, 73, 73)
+                .addComponent(btnTrasnferencia)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConta, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(41, 41, 41))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelEmailUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelNomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAgencia)
+                                .addGap(99, 99, 99)
+                                .addComponent(btnCliente))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(labelAcessoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(9, 9, 9)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(labelNomeUsuario)
+                    .addComponent(btnSair))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(labelEmailUsuario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(labelAcessoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgencia)
+                    .addComponent(btnCliente)
+                    .addComponent(btnConta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPagamento)
+                    .addComponent(btnUsuario)
+                    .addComponent(btnTrasnferencia))
+                .addGap(66, 66, 66))
+        );
 
         jMenu1.setText("Arquivos");
         jMenuBar1.add(jMenu1);
@@ -101,17 +294,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        menuLogin.setText("Login");
+
+        jMenuItem8.setText("Logins");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        menuLogin.add(jMenuItem8);
+
+        jMenuBar1.add(menuLogin);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -151,6 +362,47 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);//abre o objeto
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void btnAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgenciaActionPerformed
+        TelaCadastroAgencia tela = new TelaCadastroAgencia(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto 
+    }//GEN-LAST:event_btnAgenciaActionPerformed
+
+    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+      TelaCadastroCliente tela = new TelaCadastroCliente(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContaActionPerformed
+       TelaCadastroConta tela = new TelaCadastroConta(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnContaActionPerformed
+
+    private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
+         TelaCadastroPagamento tela = new TelaCadastroPagamento(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnPagamentoActionPerformed
+
+    private void btnTrasnferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrasnferenciaActionPerformed
+       TelaCadastroTransferencia tela = new TelaCadastroTransferencia(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnTrasnferenciaActionPerformed
+
+    private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
+        TelaCadastroUsuario tela = new TelaCadastroUsuario(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnUsuarioActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+         TelaLogin tela = new TelaLogin();//this é a tela principal o responsável
+         
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+       TelaListaLogin tela = new TelaListaLogin(this, true);//this é a tela principal o responsável
+        tela.setVisible(true);//abre o objeto
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,19 +434,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgencia;
+    private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnConta;
+    private javax.swing.JButton btnPagamento;
+    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnTrasnferencia;
+    private javax.swing.JButton btnUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelAcessoUsuario;
+    private javax.swing.JLabel labelEmailUsuario;
+    private javax.swing.JLabel labelNomeUsuario;
+    private javax.swing.JMenu menuLogin;
     // End of variables declaration//GEN-END:variables
 }

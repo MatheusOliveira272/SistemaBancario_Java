@@ -18,7 +18,7 @@ public class Login {
     private Date dataLogoff;
 
     public Login() {
-    }
+}
 
     public Login(Integer id, Usuario usuario, Date dataLogin, Date dataLogoff) {
         this.id = id;
@@ -58,6 +58,12 @@ public class Login {
     public void setDataLogoff(Date dataLogoff) {
         this.dataLogoff = dataLogoff;
     }
+
+    @Override
+    public String toString() {
+        return "Login{" + "id=" + id + ", usuario=" + usuario + ", dataLogin=" + dataLogin + ", dataLogoff=" + dataLogoff + '}';
+    }
+    
     
     
 }

@@ -22,6 +22,7 @@ public class TelaNovoUsuario extends javax.swing.JDialog {
     public TelaNovoUsuario(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(parent);
     }
 
     public JPasswordField getPasswoerdConfirmaSenhaUsuario() {

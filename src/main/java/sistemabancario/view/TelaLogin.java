@@ -4,9 +4,12 @@
  */
 package sistemabancario.view;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import sistemabancario.controller.ControllerUsuario;
+import sistemabancario.exception.LoginException;
 import sistemabancario.exception.UsuarioException;
 import sistemabancario.utils.GerarMensagens;
 
@@ -115,7 +118,9 @@ public class TelaLogin extends javax.swing.JFrame {
             new ControllerUsuario().efetuarLogin(this);
         } catch (UsuarioException ex) {
             GerarMensagens.erro(this, ex.getMessage());
-        }
+        } catch (LoginException ex) {
+           Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_btnEntraLoginActionPerformed
 
     public JTextField getTxtFieldEmailLogin() {
