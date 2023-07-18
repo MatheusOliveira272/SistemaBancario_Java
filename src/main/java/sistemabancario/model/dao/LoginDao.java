@@ -39,8 +39,10 @@ public class LoginDao {
               
         String sql = "UPDATE CONTROLE_LOGIN SET DATA_LOGOFF = ? WHERE ID = ?";
         try (Connection con = MySQL.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
+             stmt.setInt(1, login.getId());
            var result = stmt.executeUpdate();
             return result > 0;
+                             
         } catch (SQLException ex) {
             Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,7 +76,8 @@ public class LoginDao {
                              		controle_login.data_login, controle_login.data_logoff,
                                      usuarios.nome as usuario_nome, usuarios.email as usuario_email
                                      from controle_login
-                                     inner join usuarios on usuarios.id = controle_login.usuario_id;
+                                     inner join usuarios on usuarios.id = controle_login.usuario_id
+                             order by id;
                      """;
         
         List<Login> logins = new ArrayList<>();
@@ -89,25 +92,28 @@ public class LoginDao {
         }
         return logins;
     }
-
-        public static void main(String[] args) {
-         //    new LoginDao().buscarTodosLogins().forEach(System.out::println);
-
-            
-            
-            
-        // var loginDao = new LoginDao();
+    
+    public List<Login> buscaUltimoLogin(){
+         String sql = """
+                   SELECT controle_login.id, controle_login.usuario_id,
+                                                 		controle_login.data_login, controle_login.data_logoff,
+                                                         usuarios.nome as usuario_nome, usuarios.email as usuario_email
+                                                         from controle_login
+                                                         inner join usuarios on usuarios.id = controle_login.usuario_id
+                                                 order by id desc limit 1;
+                     """;
         
-      //  List<Conta> contas = contaDao.buscaTodasContas();
-
-        //insert
-           // Login l1 = new Login(null, 1, 2/06, dataLogoff)
-        // Conta cl = new Conta(null,1,2,300.00);
-        //   contaDao.inserir(cl);
-        //list
-        //contas.forEach(System.out::println);
-        //deletar
-        //contaDao.deletar(40);
+        List<Login> logins = new ArrayList<>();
+        try(Connection con = MySQL.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                logins.add(gerarLoginResultSet(rs));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return logins;
     }
-      
-}
+    }
+

@@ -16,16 +16,26 @@ import java.util.Date;
     private String email;
     private String senha;
     private Date dataCadastro;
+    private Boolean status;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email, String senha, Date dataCadastro) {
+    public Usuario(Integer id, String nome, String email, String senha, Date dataCadastro, Boolean status) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.dataCadastro = dataCadastro;
+        this.status = status;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Integer getId() {

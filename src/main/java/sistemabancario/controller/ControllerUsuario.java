@@ -24,38 +24,37 @@ import sistemabancario.view.tables.TabelaUsuario;
  * @author Matheus
  */
 public class ControllerUsuario {
-    
-    public void efetuarLogin(TelaLogin t) throws UsuarioException, LoginException{
+
+    public void efetuarLogin(TelaLogin t) throws UsuarioException, LoginException {
         var usuario = t.getTxtFieldEmailLogin().getText();
         //cria uma String a partir de um array de bytes para senha
-        var senha = new String (t.getTxtFieldSenhaLogin().getPassword());
-        
+        var senha = new String(t.getTxtFieldSenhaLogin().getPassword());
+
         var senhaEncriptografada = Criptografar.encryp(senha);
         //o optional é para deixar mais legivel
         var optionalUsuario = new UsuarioDao().buscaUsuarioPorEmail(usuario);
-        
-        if(optionalUsuario.isEmpty()){
+
+        if (optionalUsuario.isEmpty()) {
             throw new UsuarioException("Usuário/senha Inválido" + "Não Encontrado");
-            
+
         }
-        
+
         var usuarioLogado = optionalUsuario.get();
-        if(usuarioLogado.getSenha().equals(senhaEncriptografada)){
-         //aqui23/04
-           var controller = new ControllerLogin();
-                 controller.cadastraLogin(t);
-            
-          
-            
+        if (usuarioLogado.getSenha().equals(senhaEncriptografada)) {
+
+            var controller = new ControllerLogin();
+            controller.cadastraLogin(t);
+
             new TelaPrincipal().setVisible(true);
-                t.dispose();
-        }else{
+
+            t.dispose();
+        } else {
             throw new UsuarioException("Usuário/senha Inválido" + "Não Encontrado");
         }
-        
+
     }
-    
-     public void pesquisar(TelaCadastroUsuario t) {
+
+    public void pesquisar(TelaCadastroUsuario t) {
         TabelaUsuario tabelaUsuario = (TabelaUsuario) t.getTableListaUsuario().getModel();
         UsuarioDao usuarioDao = new UsuarioDao();
         tabelaUsuario.setRegistros(usuarioDao.buscarTodosUsuarios());
@@ -114,4 +113,22 @@ public class ControllerUsuario {
         }
 
     }
+    /*
+    public void abrirTelaEdicao(TelaCadastroUsuario t) throws UsuarioException {
+        if (t.getTableListaUsuario().getSelectedRowCount() == 0) {
+            throw new UsuarioException("Nenhum Registro foi selecionado!");
+        }
+
+        TabelaUsuario tabelaUsuario = (TabelaUsuario) t.getTableListaUsuario().getModel();
+        int row = t.getTableListaUsuario().getSelectedRow();
+        var usuario = tabelaUsuario.getRegistros().get(row);
+        new TelaNovoUsuario(t, true, usuario).setVisible(true);
+
+    }
+    
+    
+    
+    */
+    
+    
 }

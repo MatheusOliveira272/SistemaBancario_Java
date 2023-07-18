@@ -4,38 +4,32 @@
  */
 package sistemabancario.view.tables;
 
-import sistemabancario.model.domain.Usuario;
+import sistemabancario.model.domain.Login;
 
 /**
  *
  * @author Matheus
  */
-
-public class TabelaUsuario extends AbstractTable<Usuario>{
-    
-     
-     public TabelaUsuario() {
+public class TabelaLoginPrincipal extends AbstractTable<Login>{
+     public TabelaLoginPrincipal() {
         //o que o usuário verá
-        this( "Nome", "Email", "Status");
-     }
+        this("Usuário", "Email", "Data Login");
+    }
 
-    public TabelaUsuario(String... colunas) {
+    public TabelaLoginPrincipal(String... colunas) {
         super(colunas);
     }
-     
-    
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       Usuario usuario = getRegistros().get(rowIndex);
+        Login login = getRegistros().get(rowIndex);
         return switch (columnIndex) {
-            case 0 -> usuario.getNome();
-            case 1 -> usuario.getEmail();
-            case 2 -> usuario.getStatus();
+            case 0 -> login.getUsuario().getNome();
+            case 1 -> login.getUsuario().getEmail();
+            case 2 -> login.getDataLogin();
           
             default -> null;
-    };
-    
-}
-    
-    
+        };
+
+    }
 }

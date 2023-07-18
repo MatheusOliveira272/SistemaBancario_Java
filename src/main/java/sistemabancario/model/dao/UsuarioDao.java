@@ -30,6 +30,7 @@ public class UsuarioDao {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
+            //stmt.setBoolean(4, usuario.getStatus());
             stmt.execute();
 
         } catch (SQLException ex) {
@@ -68,11 +69,12 @@ public class UsuarioDao {
     }
 
     public boolean editar(Usuario usuario) {
-        String sql = "UPDATE USUARIOS SET NOME = ?, EMAIL = ?, SENHA = ? WHERE ID = ?";
+        String sql = "UPDATE USUARIOS SET NOME = ?, EMAIL = ?, SENHA = ?, STATUS = ? WHERE ID = ?";
         try (Connection con = MySQL.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
+            stmt.setBoolean(4, usuario.getStatus());
 
             var result = stmt.executeUpdate();
             return result > 0;
@@ -90,6 +92,7 @@ public class UsuarioDao {
         usuario.setEmail(rs.getString("email"));
         usuario.setSenha(rs.getString("senha"));
         usuario.setDataCadastro(rs.getDate("data_cadastro"));
+        usuario.setStatus(rs.getBoolean("status"));
 
         return usuario;
     }
@@ -116,14 +119,16 @@ public class UsuarioDao {
     
     public static void main(String[] args) {
         
-        Usuario usuario = new Usuario(null, "Matheus", "matheus@gmail.com",
+        /*Usuario usuario = new Usuario(null, "Matheus", "matheus@gmail.com",
                 Criptografar.encryp("123456"), null);
         
-                new UsuarioDao().inserir(usuario);
+                new UsuarioDao().inserir(usuario);*/
+       var usuarioDao = new UsuarioDao();
+       usuarioDao.deletar(1);
         
     }
     
-/*
+
     public Usuario buscarPorId(Integer id) {
         String sql = " SELECT * FROM USUARIOS WHERE ID = ?";
         try (Connection con = MySQL.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -137,5 +142,5 @@ public class UsuarioDao {
         }
         return null;
     }
-*/
+
 }
